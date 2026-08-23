@@ -2,6 +2,13 @@
 
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { Shrikhand } from 'next/font/google';
+
+const shrikhand = Shrikhand({
+  weight: '400',
+  subsets: ['latin'],
+  display: 'swap',
+});
 
 export default function HomeScreen() {
   // flowState:
@@ -50,8 +57,8 @@ export default function HomeScreen() {
   ];
 
   return (
-    <main 
-      className="relative flex h-screen w-full overflow-hidden bg-[#050405] text-white select-none"
+    <main
+      className="relative flex min-h-[1100px] h-screen w-full overflow-hidden bg-[#050405] text-white select-none"
       onClick={() => {
         if (flowState === 2) {
           setFlowState(15);
@@ -71,20 +78,20 @@ export default function HomeScreen() {
         }}
       />
 
-      {/* Figma Spotlight Layer: Inner element gets clipped, outer parent applies heavy blur for diffuse soft edges */}
-      <div className="pointer-events-none absolute left-1/2 -translate-x-1/2 -top-[74px] h-[800px] w-[500px] flex justify-center blur-[50px] opacity-70">
+      {/* Figma Spotlight Layer */}
+      <div className="pointer-events-none absolute left-1/2 -translate-x-1/2 top-[-74px] h-[730px] w-[250px] flex justify-center z-0 blur-[24px]">
         <div
-          className="h-[688px] w-[189px]"
+          className="w-full h-full"
           style={{
-            background: "linear-gradient(to bottom, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.15) 70%, transparent 100%)",
-            clipPath: "polygon(30% 0%, 70% 0%, 100% 100%, 0% 100%)"
+            background: "linear-gradient(to bottom, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.25) 55%, transparent 100%)",
+            clipPath: "polygon(46% 0%, 54% 0%, 100% 100%, 0% 100%)"
           }}
         />
       </div>
 
       {/* 2. HEADER */}
       {/* Brand logo (top-left) */}
-      <div className="absolute left-8 top-6 z-20">
+      <div className="absolute left-8 top-4 z-20">
         <Image
           src="/assets/icons/brand_logo.svg"
           alt="NextCar"
@@ -98,20 +105,19 @@ export default function HomeScreen() {
       {/* Back button below logo */}
       <button
         type="button"
-        className="absolute left-8 top-20 z-20 flex h-9 w-9 items-center justify-center rounded-full bg-white/5 border border-white/10 backdrop-blur-sm transition-colors hover:bg-white/10"
+        className="absolute left-8 top-[88px] z-20 flex transition-transform hover:scale-105"
       >
         <Image
           src="/assets/icons/back_icon.svg"
           alt="Back"
-          width={16}
-          height={16}
+          width={40}
+          height={40}
         />
       </button>
 
-      {/* Top-right theme toggle pill + action controls */}
-      <div className="absolute right-8 top-6 z-20 flex items-center gap-3">
-        {/* Theme sun/moon pill control container */}
-        <div 
+      {/* Top-right theme toggle */}
+      <div className="absolute right-8 top-6 z-20">
+        <div
           className="flex items-center rounded-full bg-white/5 border border-white/10 p-1 backdrop-blur-md"
           onClick={(e) => e.stopPropagation()}
         >
@@ -137,86 +143,88 @@ export default function HomeScreen() {
             </svg>
           </button>
         </div>
+      </div>
 
-        {/* Action buttons (Download, Share, Check) */}
-        <div className="flex items-center gap-2.5 rounded-full bg-white/5 border border-white/10 p-1 backdrop-blur-md">
-          <button
-            type="button"
-            className="flex h-8 w-8 items-center justify-center rounded-full bg-white/5 border border-white/5 transition-colors hover:bg-white/15"
-          >
-            <Image
-              src="/assets/icons/download_icon.svg"
-              alt="Download"
-              width={15}
-              height={15}
-            />
-          </button>
+      {/* Top-right action buttons (Download, Share, Check) */}
+      <div className="absolute right-8 top-[88px] z-20 flex items-center gap-4">
+        <button
+          type="button"
+          className="flex transition-transform hover:scale-105"
+        >
+          <Image
+            src="/assets/icons/download_icon.svg"
+            alt="Download"
+            width={40}
+            height={40}
+          />
+        </button>
 
-          <button
-            type="button"
-            className="flex h-8 w-8 items-center justify-center rounded-full bg-white/5 border border-white/5 transition-colors hover:bg-white/15"
-          >
-            <Image
-              src="/assets/icons/share_icon.svg"
-              alt="Share"
-              width={15}
-              height={15}
-            />
-          </button>
-          <button
-            type="button"
-            className="flex h-8 w-8 items-center justify-center rounded-full bg-[#dc2626] shadow-sm shadow-red-900/50 transition-colors hover:bg-red-600"
-            onClick={() => {
-              setIsAnimatedScreen(true);
-              setFlowState(1);
-              setTimeout(() => setFlowState(2), 600);
-              setTimeout(() => setFlowState(3), 1200);
-            }}
-          >
-            <Image
-              src="/assets/icons/check_icon.svg"
-              alt="Confirm"
-              width={15}
-              height={15}
-            />
-          </button>
-        </div>
+        <button
+          type="button"
+          className="flex transition-transform hover:scale-105"
+        >
+          <Image
+            src="/assets/icons/share_icon.svg"
+            alt="Share"
+            width={40}
+            height={40}
+          />
+        </button>
+
+        <button
+          type="button"
+          className="flex transition-transform hover:scale-105"
+          onClick={() => {
+            setIsAnimatedScreen(true);
+            setFlowState(1);
+            setTimeout(() => setFlowState(2), 600);
+            setTimeout(() => setFlowState(3), 1200);
+          }}
+        >
+          <Image
+            src="/assets/icons/check_icon.svg"
+            alt="Confirm"
+            width={40}
+            height={40}
+          />
+        </button>
       </div>
 
       {/* MAIN CONTENT AREA */}
+      {/* 3. TITLE SECTION (Anchored independently to the screen top) */}
+      <div className="absolute top-[11.8%] left-1/2 flex flex-col items-center text-center w-max -translate-x-1/2 z-20">
+        <h1 className={`${shrikhand.className} text-[36px] md:text-[60px] leading-[39px] tracking-[0.01em] uppercase`}>
+          <span className="text-white drop-shadow-sm">ENGINEERED FOR </span>
+          <span className="text-[#BF0405] drop-shadow-[0_0_15px_rgba(191,4,5,0.4)]">PASSION</span>
+        </h1>
+
+        <p className="mt-5 text-[18px] font-semibold leading-[39px] tracking-[0.01em] text-white/70">
+          Precision. Power. Performance
+        </p>
+
+        {/* Small red underline/accent */}
+        <div className="mt-1 h-[4px] w-[26px] rounded-full bg-[#BF0405]" />
+      </div>
+
       {/* 4. CENTER CAR WRAPPER (TRUE VIEWPORT & OPTICAL CENTER) */}
-      <div className="fixed top-[55%] left-1/2 z-10 w-[320px] h-[320px]" style={{ transform: 'translate(-50%, -50%)' }}>
-        {/* 3. TITLE SECTION (Anchored above the car) */}
-        <div className={`absolute bottom-[calc(100%+70px)] left-1/2 flex flex-col items-center text-center w-max ${trClass} ${isAnimatedScreen ? '-translate-x-1/2 -translate-y-[60px] scale-90' : '-translate-x-1/2 translate-y-0 scale-100'} opacity-100`}>
-          <h1 className="text-3xl md:text-[34px] font-extrabold italic tracking-wider uppercase font-serif">
-            <span className="text-white drop-shadow-sm">ENGINEERED FOR </span>
-            <span className="text-[#ef4444] drop-shadow-[0_0_15px_rgba(239,68,68,0.4)]">PASSION</span>
-          </h1>
-
-          <p className="mt-2 text-xs md:text-sm tracking-[0.22em] text-gray-400 uppercase font-medium">
-            Precision. Power. Performance
-          </p>
-
-          {/* Small red underline/accent */}
-          <div className="mt-4 h-[2px] w-10 rounded-full bg-red-600 shadow-[0_0_8px_rgba(239,68,68,0.7)]" />
-        </div>
+      <div className="absolute top-[39%] left-1/2 z-10 w-[534px] h-[534px]" style={{ transform: 'translate(-50%, -50%)' }}>
 
         {/* CAR DISPLAY — no scaling on click, only the car image at its natural size */}
         <div className={`relative flex items-center justify-center w-full h-full ${trClass}`}>
-          {/* RIPPLE ANIMATION — Decoupled from car center, shifted 5vh higher */}
+          {/* RIPPLE ANIMATION — Decoupled from car center */}
           {flowState !== 3 && (
-            <div className="absolute inset-0 pointer-events-none z-0 -translate-y-[5vh]">
+            <div className="absolute inset-0 pointer-events-none z-0">
               {[
                 { scale: 4.2, opacity: 0.3, show: true },
                 { scale: 3.0, opacity: 0.5, show: true },
                 { scale: 1.8, opacity: 0.8, show: true },
                 { scale: 0.9, opacity: 1.0, show: flowState >= 4 }
               ].map((ring, idx) => ring.show && (
-                <div 
+                <div
                   key={idx}
-                  className={`absolute top-1/2 left-1/2 w-[360px] h-[360px] rounded-full border-[1px] border-white/[0.05] bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.3)_0%,rgba(255,255,255,0.08)_35%,transparent_55%)] shadow-[inset_0_40px_80px_rgba(255,255,255,0.08),inset_0_4px_15px_rgba(255,255,255,0.05)] [-webkit-mask-image:linear-gradient(to_bottom,black_15%,transparent_90%)] [mask-image:linear-gradient(to_bottom,black_15%,transparent_90%)] transition-all ${flowState === 0 || flowState === 15 ? 'duration-[250ms]' : 'duration-[2400ms]'} ease-out`}
+                  className={`absolute top-1/2 left-1/2 w-[360px] h-[360px] rounded-full border-[1px] border-white/[0.05] shadow-[inset_0_4px_15px_rgba(255,255,255,0.3)] [-webkit-mask-image:linear-gradient(to_bottom,black_15%,transparent_90%)] [mask-image:linear-gradient(to_bottom,black_15%,transparent_90%)] transition-all ${flowState === 0 || flowState === 15 ? 'duration-[300ms] delay-0 ease-in' : 'duration-[600ms] delay-[300ms] ease-[cubic-bezier(0.175,0.885,0.32,1.1)]'}`}
                   style={{
-                    transform: `translate(-50%, -50%) scale(${flowState > 0 && flowState !== 15 ? ring.scale : 0.95})`,
+                    transform: `translate(-50%, -50%) scale(${flowState > 0 && flowState !== 15 ? ring.scale : 0.1})`,
                     opacity: flowState > 0 && flowState !== 15 ? ring.opacity : 0
                   }}
                 />
@@ -226,11 +234,11 @@ export default function HomeScreen() {
 
           {/* CAR DISPLAY & TIMELINE MORPH */}
           <div className={`absolute top-1/2 left-1/2 flex items-center justify-center transition-all z-10 overflow-hidden ${flowState >= 10 ? 'duration-[1000ms] ease-in-out' : flowState >= 5 ? 'duration-[150ms] ease-in' : 'duration-[300ms] ease-[cubic-bezier(0.2,0.8,0.2,1)]'
-            } ${flowState <= 3 ? 'w-[320px] h-[320px] bg-transparent border-[0px] border-transparent opacity-100 rounded-none' :
+            } ${flowState <= 3 ? 'w-[534px] h-[534px] bg-transparent border-[0px] border-transparent opacity-100 rounded-none' :
               flowState === 4 ? `${TIMELINE_WIDTH} h-[320px] bg-black/50 border-[2px] border-dotted border-[#C40504] opacity-100 rounded-none shadow-[0_0_20px_rgba(196,5,4,0.5)]` :
                 `${TIMELINE_WIDTH} h-0 bg-transparent border-t-[2px] border-b-0 border-x-0 border-dotted border-[#C40504] opacity-100 rounded-none shadow-[0_0_10px_rgba(196,5,4,0.5)]`
             }`} style={{
-              transform: `translate(-50%, calc(-50% - ${flowState >= 4 ? '5vh' : '0px'}))`,
+              transform: `translate(-50%, -50%)`,
               clipPath: flowState >= 10 ? 'inset(-50px -50px -50px 105%)' : 'inset(-50px -50px -50px -20px)'
             }}>
             {/* TOP Bar-code band */}
@@ -250,19 +258,24 @@ export default function HomeScreen() {
 
             {/* Native img used here to bypass Next.js Image aspect-ratio constraints during the aggressive morph */}
             <img
-              src={flowState >= 3 && flowState !== 15 ? "/assets/images/car_3.png" : "/assets/images/car_1.png"}
+              src={flowState >= 3 && flowState !== 15 ? "/assets/images/car_3.png" : (flowState === 1 || flowState === 2) ? "/assets/images/car_2.png" : "/assets/images/car_1.png"}
               alt="Engineered Car"
-              className={`relative z-10 transition-all ${flowState >= 5 && flowState !== 15 ? 'duration-[150ms] ease-in' : 'duration-[250ms] ease-out'
+              className={`relative z-10 transition-all ${flowState >= 5 && flowState !== 15 ? 'duration-[150ms] ease-in' : flowState === 0 ? 'duration-[400ms] delay-[150ms] ease-out' : 'duration-[250ms] ease-out'
                 } ${flowState === 4 ? 'w-full h-full object-fill opacity-50 blur-[2px]' :
                   (flowState >= 5 && flowState !== 15) ? 'w-full h-0 opacity-0 blur-[4px]' :
-                    'w-[342px] h-[341px] max-w-none object-contain opacity-100 blur-none'
-                } ${trClass}`}
-              style={{ width: (flowState >= 4 && flowState !== 15) ? '100%' : '342px', height: (flowState >= 4 && flowState !== 15) ? '100%' : '341px' }}
+                    flowState === 15 ? 'w-[534px] h-[534px] max-w-none object-contain opacity-0 blur-none !duration-0' :
+                      'w-[534px] h-[534px] max-w-none object-contain opacity-100 blur-none'
+                } ${flowState === 15 ? '' : trClass}`}
+              style={{
+                width: (flowState >= 4 && flowState !== 15) ? '100%' : '534px',
+                height: (flowState >= 4 && flowState !== 15) ? '100%' : '534px',
+                transform: (flowState < 4 || flowState === 15) ? 'translateY(110px)' : 'translateY(0px)'
+              }}
             />
           </div>
 
           {/* STATS OVERLAY - Only visible in animated screen state (flowState 1 and 2) */}
-          <div className={`absolute inset-0 pointer-events-none ${trClass} ${(flowState === 1 || flowState === 2) ? 'opacity-100' : 'opacity-0'}`}>
+          <div className={`absolute inset-0 pointer-events-none transition-all duration-[400ms] ease-[cubic-bezier(0.175,0.885,0.32,1.2)] ${(flowState === 1 || flowState === 2) ? 'opacity-100 scale-100' : 'opacity-0 scale-[0.3]'}`}>
             {/* Top Left */}
             <div className="absolute -left-[60px] top-[20px] text-right">
               <div className="text-[20px] font-bold text-white leading-tight">352</div>
@@ -372,14 +385,14 @@ export default function HomeScreen() {
             {/* Truck Branding Overlay (Moves and scales with the truck) */}
             <div className="absolute top-[10%] left-[12%] w-[64%] h-[59%] flex flex-col items-center justify-center pointer-events-none z-10">
               <div className="flex flex-col items-center -translate-y-[20%]">
-                <Image 
-                  src="/assets/icons/brand_logo.svg" 
-                  alt="Brand Logo" 
-                  width={260} 
-                  height={86} 
-                  className="w-[67px] md:w-[90px] h-auto mb-[6px]" 
+                <Image
+                  src="/assets/icons/brand_logo.svg"
+                  alt="Brand Logo"
+                  width={260}
+                  height={86}
+                  className="w-[67px] md:w-[90px] h-auto mb-[6px]"
                 />
-                <span 
+                <span
                   className="text-black/80 font-black uppercase tracking-tight text-[27px] md:text-[38px] leading-none whitespace-nowrap"
                   style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif' }}
                 >
@@ -392,7 +405,7 @@ export default function HomeScreen() {
       </div>
 
       {/* 5. SIDE NAVIGATION - LEFT */}
-      <div className="absolute left-[calc(10%-80px)] top-1/2 -translate-y-1/2 w-[120px] h-[300px] z-30">
+      <div className="absolute left-[calc(10%-80px)] top-[39%] -translate-y-1/2 w-[120px] h-[300px] z-30">
         {/* Decorative Dashed Arc - Convex to the left, spaced 20px away from buttons */}
         <svg className="absolute inset-0 w-full h-full pointer-events-none overflow-visible" viewBox="0 0 120 300">
           <path d="M 55 0 Q -65 150 55 300" fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="2.5" strokeDasharray="8 14" strokeLinecap="round" />
@@ -415,7 +428,7 @@ export default function HomeScreen() {
         {/* Home Button (Active) */}
         <div className="absolute left-[15px] top-[119px] flex items-center z-20">
           <Image
-            src="/assets/icons/home_icon.svg"
+            src={(flowState === 1 || flowState === 2) ? "/assets/icons/home_active.svg" : "/assets/icons/home_icon.svg"}
             alt="Home"
             width={62} height={62}
             className="cursor-pointer transition-transform hover:scale-105"
@@ -439,7 +452,7 @@ export default function HomeScreen() {
       </div>
 
       {/* 6. SIDE NAVIGATION - RIGHT */}
-      <div className="absolute right-[calc(10%-80px)] top-1/2 -translate-y-1/2 w-[120px] h-[300px] z-30">
+      <div className="absolute right-[calc(10%-80px)] top-[39%] -translate-y-1/2 w-[120px] h-[300px] z-30">
         {/* Decorative Dashed Arc - Convex to the right, spaced 20px away from buttons */}
         <svg className="absolute inset-0 w-full h-full pointer-events-none overflow-visible" viewBox="0 0 120 300">
           <path d="M 65 0 Q 185 150 65 300" fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="2.5" strokeDasharray="8 14" strokeLinecap="round" />
@@ -509,10 +522,10 @@ export default function HomeScreen() {
       {/* GLOBAL ANIMATED TOOLTIP */}
       {/* Anchored right side, animates X via transform to avoid layout reflow */}
       <div
-        className="absolute top-1/2 -translate-y-1/2 right-[calc(10%+15px)] pointer-events-none z-50"
+        className="absolute top-[39%] -translate-y-1/2 right-[calc(10%+15px)] pointer-events-none z-50"
       >
         <div
-          className={`transition-transform ${flowState === 0 || flowState === 15 ? 'duration-[1000ms]' : 'duration-[400ms]'} ease-[cubic-bezier(0.2,0.8,0.2,1)] ${flowState === 3 ? 'opacity-0' : 'opacity-100'}`}
+          className={`transition-all ${flowState === 0 || flowState === 15 ? 'duration-[1000ms] delay-0' : 'duration-[600ms] delay-[300ms]'} ease-[cubic-bezier(0.2,0.8,0.2,1)] ${flowState === 3 ? 'opacity-0' : 'opacity-100'}`}
           style={{ transform: flowState === 0 || flowState === 15 ? 'translateX(calc(-80vw + 158px))' : 'translateX(0)' }}
         >
           {/* Fixed width pill with crossfading text to prevent width snapping */}
@@ -592,13 +605,13 @@ export default function HomeScreen() {
 
 
       {/* 8. FINAL THANK YOU SCREEN (State 14) */}
-      <div 
+      <div
         className={`fixed inset-0 pointer-events-none z-30 flex flex-col items-center justify-center transition-all duration-[300ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] ${flowState === 14 ? 'opacity-100' : 'opacity-0'}`}
       >
         <h2 className="text-4xl md:text-[50px] font-black italic tracking-widest uppercase font-serif text-white drop-shadow-lg mb-8">
           THANK YOU
         </h2>
-        <button 
+        <button
           className={`flex items-center justify-center px-10 py-3 rounded-full bg-[#1c1c1c] border border-white/10 hover:bg-[#2a2a2a] transition-all duration-300 text-white text-sm tracking-widest font-medium ${flowState === 14 ? 'pointer-events-auto' : 'pointer-events-none'}`}
           onClick={() => {
             setFlowState(15);
