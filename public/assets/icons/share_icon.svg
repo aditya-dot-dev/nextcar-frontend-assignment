@@ -1,0 +1,23 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_2722_53)">
+<rect width="48" height="48" rx="24" fill="#3C3C3C" fill-opacity="0.5"/>
+<g filter="url(#filter0_f_2722_53)">
+<ellipse cx="26.4976" cy="61.3906" rx="22.1363" ry="20.4335" fill="white" fill-opacity="0.4"/>
+</g>
+<path d="M28.5 21C29.7426 21 30.75 19.9926 30.75 18.75C30.75 17.5074 29.7426 16.5 28.5 16.5C27.2574 16.5 26.25 17.5074 26.25 18.75C26.25 19.9926 27.2574 21 28.5 21Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M19.5 26.25C20.7426 26.25 21.75 25.2426 21.75 24C21.75 22.7574 20.7426 21.75 19.5 21.75C18.2574 21.75 17.25 22.7574 17.25 24C17.25 25.2426 18.2574 26.25 19.5 26.25Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M28.5 31.5C29.7426 31.5 30.75 30.4926 30.75 29.25C30.75 28.0074 29.7426 27 28.5 27C27.2574 27 26.25 28.0074 26.25 29.25C26.25 30.4926 27.2574 31.5 28.5 31.5Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M21.4424 25.1323L26.5649 28.1173" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M26.5574 19.8823L21.4424 22.8673" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<filter id="filter0_f_2722_53" x="-25.1538" y="11.4419" width="103.303" height="99.8972" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="14.7575" result="effect1_foregroundBlur_2722_53"/>
+</filter>
+<clipPath id="clip0_2722_53">
+<rect width="48" height="48" rx="24" fill="white"/>
+</clipPath>
+</defs>
+</svg>
