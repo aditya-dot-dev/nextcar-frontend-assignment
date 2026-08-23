@@ -34,7 +34,7 @@ export default function AnimatedTooltip({ flowState }: AnimatedTooltipProps) {
               </defs>
               <path
                 d="M 112 1 L 18 1 A 6 6 0 0 0 12 7 L 12 13 Q 7 13 7 18 Q 7 23 12 23 L 12 29 A 6 6 0 0 0 18 35 L 112 35 A 17 17 0 0 0 112 1 Z"
-                fill="#262626"
+                className="fill-white dark:fill-[#262626] transition-colors duration-300"
                 stroke="url(#grad-left)"
                 strokeWidth="1.5"
               />
@@ -54,7 +54,7 @@ export default function AnimatedTooltip({ flowState }: AnimatedTooltipProps) {
               </defs>
               <path
                 d="M 18 1 L 112 1 A 6 6 0 0 1 118 7 L 118 13 Q 123 13 123 18 Q 123 23 118 23 L 118 29 A 6 6 0 0 1 112 35 L 18 35 A 17 17 0 0 1 18 1 Z"
-                fill="#262626"
+                className="fill-white dark:fill-[#262626] transition-colors duration-300"
                 stroke="url(#grad-right)"
                 strokeWidth="1.5"
               />
@@ -62,13 +62,13 @@ export default function AnimatedTooltip({ flowState }: AnimatedTooltipProps) {
 
             {/* Text Content */}
             <div
-              className={`absolute inset-0 flex items-center justify-center text-white/90 text-[12px] font-light tracking-wide whitespace-nowrap transition-opacity duration-500 ${flowState === 0 || flowState === 15 ? 'opacity-100' : 'opacity-0'}`}
+              className={`absolute inset-0 flex items-center justify-center text-gray-800 dark:text-white/90 text-[12px] font-light tracking-wide whitespace-nowrap transition-[opacity,color] duration-500 ${flowState === 0 || flowState === 15 ? 'opacity-100' : 'opacity-0'}`}
               style={{ fontFamily: '"SF Pro Display", "SF Pro", -apple-system, sans-serif' }}
             >
               Click for Home
             </div>
             <div
-              className={`absolute inset-0 flex items-center justify-center text-white/90 text-[12px] font-light tracking-wide whitespace-nowrap transition-opacity duration-500 ${(flowState > 0 && flowState !== 15) ? 'opacity-100' : 'opacity-0'}`}
+              className={`absolute inset-0 flex items-center justify-center text-gray-800 dark:text-white/90 text-[12px] font-light tracking-wide whitespace-nowrap transition-[opacity,color] duration-500 ${(flowState > 0 && flowState !== 15) ? 'opacity-100' : 'opacity-0'}`}
               style={{ fontFamily: '"SF Pro Display", "SF Pro", -apple-system, sans-serif' }}
             >
               Explore timeline

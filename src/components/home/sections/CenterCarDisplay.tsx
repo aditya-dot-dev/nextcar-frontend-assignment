@@ -27,7 +27,7 @@ export default function CenterCarDisplay({ flowState, trClass, TIMELINE_WIDTH }:
               ].map((ring, idx) => ring.show && (
                 <div
                   key={idx}
-                  className={`absolute top-1/2 left-1/2 w-[360px] h-[360px] rounded-full border-[1px] border-white/[0.05] shadow-[inset_0_4px_15px_rgba(255,255,255,0.3)] [-webkit-mask-image:linear-gradient(to_bottom,black_15%,transparent_90%)] [mask-image:linear-gradient(to_bottom,black_15%,transparent_90%)] transition-all ${flowState === 0 || flowState === 15 ? 'duration-[300ms] delay-0 ease-in' : 'duration-[600ms] delay-[300ms] ease-[cubic-bezier(0.175,0.885,0.32,1.1)]'}`}
+                  className={`absolute top-1/2 left-1/2 w-[360px] h-[360px] rounded-full border-[1px] border-black/[0.05] dark:border-white/[0.05] shadow-[inset_0_4px_15px_rgba(0,0,0,0.06)] dark:shadow-[inset_0_4px_15px_rgba(255,255,255,0.3)] [-webkit-mask-image:linear-gradient(to_bottom,black_15%,transparent_90%)] [mask-image:linear-gradient(to_bottom,black_15%,transparent_90%)] transition-all ${flowState === 0 || flowState === 15 ? 'duration-[300ms] delay-0 ease-in' : 'duration-[600ms] delay-[300ms] ease-[cubic-bezier(0.175,0.885,0.32,1.1)]'}`}
                   style={{
                     transform: `translate(-50%, -50%) scale(${flowState > 0 && flowState !== 15 ? ring.scale : 0.1})`,
                     opacity: flowState > 0 && flowState !== 15 ? ring.opacity : 0
@@ -40,7 +40,7 @@ export default function CenterCarDisplay({ flowState, trClass, TIMELINE_WIDTH }:
           {/* CAR DISPLAY & TIMELINE MORPH */}
           <div className={`absolute top-1/2 left-1/2 flex items-center justify-center transition-all z-10 overflow-hidden ${flowState >= 10 ? 'duration-[1000ms] ease-in-out' : flowState >= 5 ? 'duration-[150ms] ease-in' : 'duration-[300ms] ease-[cubic-bezier(0.2,0.8,0.2,1)]'
             } ${flowState <= 3 ? 'w-[534px] h-[534px] bg-transparent border-[0px] border-transparent opacity-100 rounded-none' :
-              flowState === 4 ? `${TIMELINE_WIDTH} h-[320px] bg-black/50 border-[2px] border-dotted border-[#C40504] opacity-100 rounded-none shadow-[0_0_20px_rgba(196,5,4,0.5)]` :
+              flowState === 4 ? `${TIMELINE_WIDTH} h-[320px] bg-white/50 dark:bg-black/50 border-[2px] border-dotted border-[#C40504] opacity-100 rounded-none shadow-[0_0_20px_rgba(196,5,4,0.5)] transition-colors duration-300` :
                 `${TIMELINE_WIDTH} h-0 bg-transparent border-t-[2px] border-b-0 border-x-0 border-dotted border-[#C40504] opacity-100 rounded-none shadow-[0_0_10px_rgba(196,5,4,0.5)]`
             }`} style={{
               transform: `translate(-50%, -50%)`,
@@ -86,38 +86,38 @@ export default function CenterCarDisplay({ flowState, trClass, TIMELINE_WIDTH }:
           >
             {/* Top Left */}
             <div className="absolute right-[calc(100%-81px)] top-[110px] text-right w-max">
-              <div className="text-[30px] font-semibold text-white leading-none tracking-tight">352</div>
-              <div className="text-[13px] text-white/60 mt-1.5 font-normal">Top Speed</div>
+              <div className="text-[30px] font-semibold text-gray-900 dark:text-white leading-none tracking-tight transition-colors duration-300">352</div>
+              <div className="text-[13px] text-gray-500 dark:text-white/60 mt-1.5 font-normal transition-colors duration-300">Top Speed</div>
             </div>
 
             {/* Mid Left */}
             <div className="absolute right-[calc(100%-30px)] top-1/2 -translate-y-1/2 text-right w-max">
-              <div className="text-[30px] font-semibold text-white leading-none tracking-tight">620</div>
-              <div className="text-[13px] text-white/60 mt-1.5 font-normal">Power (HP)</div>
+              <div className="text-[30px] font-semibold text-gray-900 dark:text-white leading-none tracking-tight transition-colors duration-300">620</div>
+              <div className="text-[13px] text-gray-500 dark:text-white/60 mt-1.5 font-normal transition-colors duration-300">Power (HP)</div>
             </div>
 
             {/* Bottom Left */}
             <div className="absolute right-[calc(100%-81px)] bottom-[110px] text-right w-max">
-              <div className="text-[30px] font-semibold text-white leading-none tracking-tight">780</div>
-              <div className="text-[13px] text-white/60 mt-1.5 font-normal">Torque</div>
+              <div className="text-[30px] font-semibold text-gray-900 dark:text-white leading-none tracking-tight transition-colors duration-300">780</div>
+              <div className="text-[13px] text-gray-500 dark:text-white/60 mt-1.5 font-normal transition-colors duration-300">Torque</div>
             </div>
 
             {/* Top Right */}
             <div className="absolute left-[calc(100%-81px)] top-[110px] text-left w-max">
-              <div className="text-[30px] font-semibold text-white leading-none tracking-tight">3.2 Sec</div>
-              <div className="text-[13px] text-white/60 mt-1.5 font-normal">0-100 KM/H</div>
+              <div className="text-[30px] font-semibold text-gray-900 dark:text-white leading-none tracking-tight transition-colors duration-300">3.2 Sec</div>
+              <div className="text-[13px] text-gray-500 dark:text-white/60 mt-1.5 font-normal transition-colors duration-300">0-100 KM/H</div>
             </div>
 
             {/* Mid Right */}
             <div className="absolute left-[calc(100%-30px)] top-1/2 -translate-y-1/2 text-left w-max">
-              <div className="text-[30px] font-semibold text-white leading-none tracking-tight">2,450 KM</div>
-              <div className="text-[13px] text-white/60 mt-1.5 font-normal">Oil Change</div>
+              <div className="text-[30px] font-semibold text-gray-900 dark:text-white leading-none tracking-tight transition-colors duration-300">2,450 KM</div>
+              <div className="text-[13px] text-gray-500 dark:text-white/60 mt-1.5 font-normal transition-colors duration-300">Oil Change</div>
             </div>
 
             {/* Bottom Right */}
             <div className="absolute left-[calc(100%-81px)] bottom-[110px] text-left w-max">
-              <div className="text-[30px] font-semibold text-white leading-none tracking-tight">520 KM</div>
-              <div className="text-[13px] text-white/60 mt-1.5 font-normal">Range</div>
+              <div className="text-[30px] font-semibold text-gray-900 dark:text-white leading-none tracking-tight transition-colors duration-300">520 KM</div>
+              <div className="text-[13px] text-gray-500 dark:text-white/60 mt-1.5 font-normal transition-colors duration-300">Range</div>
             </div>
           </div>
         </div>
@@ -164,7 +164,7 @@ export default function CenterCarDisplay({ flowState, trClass, TIMELINE_WIDTH }:
           }}
         >
           {/* Glowing dot/car */}
-          <div className={`relative flex items-center justify-center transition-all ${flowState >= 11 ? 'duration-[600ms] ease-in-out w-[270px] h-[270px] bg-transparent border-[0px] border-transparent shadow-none' : 'w-[50px] h-[50px] bg-[#111] rounded-full border-[3px] border-[#403636] shadow-xl'} -translate-x-1/2`}>
+          <div className={`relative flex items-center justify-center transition-all ${flowState >= 11 ? 'duration-[600ms] ease-in-out w-[270px] h-[270px] bg-transparent border-[0px] border-transparent shadow-none' : 'w-[50px] h-[50px] bg-white dark:bg-[#111] rounded-full border-[3px] border-gray-300 dark:border-[#403636] shadow-xl'} -translate-x-1/2`}>
             {/* Small image */}
             <Image src="/assets/images/car_3_reshaped.png" alt="Car Marker" width={100} height={100} className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[82%] h-[82%] rounded-full object-cover transition-opacity ${flowState >= 11 ? 'duration-[600ms] opacity-0' : 'duration-300 opacity-100'}`} />
 
@@ -211,10 +211,10 @@ export default function CenterCarDisplay({ flowState, trClass, TIMELINE_WIDTH }:
                 transitionDelay: flowState >= 6.5 && flowState < 11 ? '300ms' : '0ms'
               }}
             >
-              <div className="text-white font-semibold text-[20px] uppercase tracking-wide">
+              <div className="text-gray-900 dark:text-white font-semibold text-[20px] uppercase tracking-wide transition-colors duration-300">
                 {flowState <= 7 ? 'Registration' : flowState <= 8 ? 'Consultation' : flowState <= 9 ? 'Artist assign' : 'Vehicle Pickup'}
               </div>
-              <div className="text-[#a3a3a3] text-[13px] mt-1 font-light tracking-wide">
+              <div className="text-gray-500 dark:text-[#a3a3a3] text-[13px] mt-1 font-light tracking-wide transition-colors duration-300">
                 {flowState <= 7 ? 'Fill form for submission' : flowState <= 8 ? 'Planning and pricing' : flowState <= 9 ? 'according to task' : 'Payment & dropoff'}
               </div>
             </div>

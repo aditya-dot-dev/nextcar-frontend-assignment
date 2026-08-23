@@ -29,7 +29,7 @@ export default function HomeScreen() {
 
   return (
     <main
-      className="relative flex h-[max(100vh,831px)] w-full overflow-hidden bg-[#050405] text-white select-none"
+      className="relative flex h-[max(100vh,831px)] w-full overflow-hidden bg-[#EBEBEB] dark:bg-[#050405] text-black dark:text-white select-none transition-colors duration-300"
       onClick={() => {
         if (flowState === 2) {
           setFlowState(15);

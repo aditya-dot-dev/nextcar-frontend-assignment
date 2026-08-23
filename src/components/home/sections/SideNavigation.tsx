@@ -16,7 +16,7 @@ export default function SideNavigation({ flowState, setFlowState, startTimelineS
       <div className="absolute left-[calc(10%-80px)] top-[429px] -translate-y-1/2 w-[120px] h-[300px] z-30">
         {/* Decorative Dashed Arc - Convex to the left, spaced 20px away from buttons */}
         <svg className="absolute left-0 top-1/2 -translate-y-1/2 w-full h-[95%] pointer-events-none overflow-visible" viewBox="0 0 120 300">
-          <path d="M 55 0 Q -65 150 55 300" fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="1.5" strokeDasharray="8 14" strokeLinecap="round" />
+          <path d="M 55 0 Q -65 150 55 300" fill="none" className="stroke-gray-300 dark:stroke-white/40 transition-colors duration-300" strokeWidth="1.5" strokeDasharray="8 14" strokeLinecap="round" />
         </svg>
 
         {/* Timer Button */}
@@ -24,7 +24,7 @@ export default function SideNavigation({ flowState, setFlowState, startTimelineS
           src="/assets/icons/timer_icon.svg"
           alt="Timer"
           width={59} height={59}
-          className="absolute left-[44px] top-[34px] cursor-pointer transition-transform hover:scale-105 z-10"
+          className="absolute left-[44px] top-[34px] cursor-pointer transition-transform hover:scale-105 z-10 dark:invert-0 invert dark:shadow-none shadow-md rounded-full dark:ring-0 ring-1 ring-black/5"
           onClick={() => {
             if (flowState === 2) {
               setFlowState(15);
@@ -39,7 +39,7 @@ export default function SideNavigation({ flowState, setFlowState, startTimelineS
             src={(flowState === 1 || flowState === 2) ? "/assets/icons/home_active.svg" : "/assets/icons/home_icon.svg"}
             alt="Home"
             width={59} height={59}
-            className="cursor-pointer transition-transform hover:scale-105"
+            className={`cursor-pointer transition-transform hover:scale-105 rounded-full ${(flowState === 1 || flowState === 2) ? 'drop-shadow-[0_0_12px_rgba(239,68,68,0.6)]' : 'dark:invert-0 invert dark:shadow-none shadow-md dark:ring-0 ring-1 ring-black/5'}`}
             onClick={() => {
               if (flowState === 0) {
                 setFlowState(1);
@@ -59,7 +59,7 @@ export default function SideNavigation({ flowState, setFlowState, startTimelineS
           src="/assets/icons/rupee_icon.svg"
           alt="Rupee"
           width={59} height={59}
-          className="absolute left-[44px] top-[204px] cursor-pointer transition-transform hover:scale-105 z-10"
+          className="absolute left-[44px] top-[204px] cursor-pointer transition-transform hover:scale-105 z-10 dark:invert-0 invert dark:shadow-none shadow-md rounded-full dark:ring-0 ring-1 ring-black/5"
           onClick={() => {
             if (flowState === 2) {
               setFlowState(15);
@@ -73,7 +73,7 @@ export default function SideNavigation({ flowState, setFlowState, startTimelineS
       <div className="absolute right-[calc(10%-80px)] top-[429px] -translate-y-1/2 w-[120px] h-[300px] z-30">
         {/* Decorative Dashed Arc - Convex to the right, spaced 20px away from buttons */}
         <svg className="absolute left-0 top-1/2 -translate-y-1/2 w-full h-[95%] pointer-events-none overflow-visible" viewBox="0 0 120 300">
-          <path d="M 65 0 Q 185 150 65 300" fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="1.5" strokeDasharray="8 14" strokeLinecap="round" />
+          <path d="M 65 0 Q 185 150 65 300" fill="none" className="stroke-gray-300 dark:stroke-white/40 transition-colors duration-300" strokeWidth="1.5" strokeDasharray="8 14" strokeLinecap="round" />
         </svg>
 
         {/* Chat Button */}
@@ -81,7 +81,7 @@ export default function SideNavigation({ flowState, setFlowState, startTimelineS
           src="/assets/icons/chat_icon.svg"
           alt="Chat"
           width={59} height={59}
-          className="absolute left-[14px] top-[34px] cursor-pointer transition-transform hover:scale-105 z-10"
+          className="absolute left-[14px] top-[34px] cursor-pointer transition-transform hover:scale-105 z-10 dark:invert-0 invert dark:shadow-none shadow-md rounded-full dark:ring-0 ring-1 ring-black/5"
           onClick={() => {
             if (flowState === 2) {
               setFlowState(15);
@@ -96,7 +96,7 @@ export default function SideNavigation({ flowState, setFlowState, startTimelineS
             src={flowState >= 3 && flowState !== 15 ? "/assets/icons/timeline_active.svg" : "/assets/icons/timeline_icon.svg"}
             alt="Timeline"
             width={59} height={59}
-            className="cursor-pointer transition-transform hover:scale-105"
+            className={`cursor-pointer transition-transform hover:scale-105 rounded-full ${flowState >= 3 && flowState !== 15 ? 'drop-shadow-[0_0_12px_rgba(239,68,68,0.6)]' : 'dark:invert-0 invert dark:shadow-none shadow-md dark:ring-0 ring-1 ring-black/5'}`}
             onClick={(e) => {
               e.stopPropagation();
               // HOME -> FRAME 3 (Start of Timeline sequence)
@@ -117,7 +117,7 @@ export default function SideNavigation({ flowState, setFlowState, startTimelineS
           src="/assets/icons/notes_icon.svg"
           alt="Notes"
           width={59} height={59}
-          className="absolute left-[14px] top-[204px] cursor-pointer transition-transform hover:scale-105 z-10"
+          className="absolute left-[14px] top-[204px] cursor-pointer transition-transform hover:scale-105 z-10 dark:invert-0 invert dark:shadow-none shadow-md rounded-full dark:ring-0 ring-1 ring-black/5"
           onClick={() => {
             if (flowState === 2) {
               setFlowState(15);

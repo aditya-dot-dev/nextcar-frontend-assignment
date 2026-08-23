@@ -75,6 +75,7 @@ export default function BottomRacingTimeline({ trClass, checkpoints }: BottomRac
               d="M 0 90 C 1.7 88, 3.3 86, 5 84 C 6.7 82, 8.3 80, 10 79.5 C 11.7 79.8, 13.3 79.8, 15 79.5 C 16.7 79.2, 18.3 79.1, 20 77.6 C 21.7 76.1, 23.3 71.8, 25 70.5 C 26.7 69.2, 28.3 70.1, 30 70 C 31.7 69.9, 33.3 70.2, 35 70 C 36.7 69.8, 38.3 69.6, 40 69 C 41.7 68.5, 43.3 68.5, 45 66.7 C 46.7 64.9, 48.3 60.0, 50 58.1 C 51.7 56.2, 53.3 55.8, 55 55.2 C 56.7 54.6, 58.3 54.5, 60 54.3 C 61.7 54.1, 63.3 54.0, 65 53.8 C 66.7 53.6, 68.3 54.2, 70 52.9 C 71.7 51.6, 73.3 49.4, 75 46.2 C 76.7 43.0, 78.3 36.7, 80 33.8 C 81.7 30.9, 83.3 29.7, 85 28.6 C 86.7 27.5, 88.3 27.9, 90 27.1 C 91.7 26.3, 93.3 25.0, 95 23.8 C 96.7 22.6, 98.3 20.6, 100 20 L 100 160 L 0 160 Z"
               fill={layer.fill}
               mask={layer.mask}
+              className="opacity-[0.25] dark:opacity-100 transition-opacity duration-300"
             />
           ))}
 
@@ -109,19 +110,19 @@ export default function BottomRacingTimeline({ trClass, checkpoints }: BottomRac
                 alt={cp.lap}
                 width={54}
                 height={54}
-                className={cp.active ? 'drop-shadow-[0_0_12px_rgba(239,68,68,0.8)]' : ''}
+                className={cp.active ? 'drop-shadow-[0_0_12px_rgba(239,68,68,0.8)]' : 'dark:invert-0 invert transition-all duration-300'}
               />
             </div>
 
             {/* Vertical connector line growing downwards strictly from the bottom of the checkpoint */}
-            <div className={`flex-1 border-l border-dashed ${trClass} ${cp.active ? 'border-red-600/50' : 'border-[#4b5563]/60'} w-0 mt-2 mb-2`} />
+            <div className={`flex-1 border-l border-dashed ${trClass} ${cp.active ? 'border-red-600/50' : 'border-gray-300 dark:border-[#4b5563]/60'} transition-colors duration-300 w-0 mt-2 mb-2`} />
 
             {/* Text Label aligned identically at the bottom */}
             <div className="absolute top-full w-[140px] text-center" style={{ fontFamily: '"SF Pro Display", "SF Pro", -apple-system, sans-serif' }}>
-              <div className={`text-[12px] md:text-[13px] font-bold tracking-wider ${trClass} ${cp.active ? 'text-white' : 'text-gray-400'}`}>
+              <div className={`text-[12px] md:text-[13px] font-bold tracking-wider ${trClass} ${cp.active ? 'text-gray-900 dark:text-white' : 'text-gray-500 dark:text-gray-400'} transition-colors duration-300`}>
                 {cp.lap}
               </div>
-              <div className={`text-[11px] md:text-[12px] tracking-wider mt-1 ${trClass} ${cp.active ? 'text-gray-300' : 'text-[#6b7280]'}`}>
+              <div className={`text-[11px] md:text-[12px] tracking-wider mt-1 ${trClass} ${cp.active ? 'text-gray-700 dark:text-gray-300' : 'text-gray-400 dark:text-[#6b7280]'} transition-colors duration-300`}>
                 {cp.zone}
               </div>
             </div>

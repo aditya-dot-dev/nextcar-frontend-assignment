@@ -10,11 +10,11 @@ export default function TitleSection({ shrikhandClassName }: TitleSectionProps) 
       {/* 3. TITLE SECTION (Anchored independently to the screen top) */}
       <div className="absolute top-[130px] left-1/2 flex flex-col items-center text-center w-max -translate-x-1/2 z-20">
         <h1 className={`${shrikhandClassName} text-[36px] md:text-[60px] leading-[39px] tracking-[0.01em] uppercase font-normal antialiased`}>
-          <span className="text-white drop-shadow-sm">ENGINEERED FOR </span>
-          <span className="text-[#BF0405] drop-shadow-[0_0_15px_rgba(191,4,5,0.4)]">PASSION</span>
+          <span className="text-slate-800 dark:text-white drop-shadow-sm transition-colors duration-300">ENGINEERED FOR </span>
+          <span className="text-[#BF0405] drop-shadow-[0_0_8px_rgba(191,4,5,0.2)] dark:drop-shadow-[0_0_15px_rgba(191,4,5,0.4)]">PASSION</span>
         </h1>
 
-        <p className="mt-5 text-[18px] font-normal leading-[39px] tracking-[0.01em] text-white/70">
+        <p className="mt-5 text-[18px] font-normal leading-[39px] tracking-[0.01em] text-gray-600 dark:text-white/70 transition-colors duration-300">
           Precision. Power. Performance
         </p>
 
