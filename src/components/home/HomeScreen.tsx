@@ -49,16 +49,16 @@ export default function HomeScreen() {
   const activeLap = isTimelineStarted ? 'LAP 05' : 'LAP 03';
 
   const checkpoints = [
-    { lap: 'LAP 01', zone: 'Speed Zone', left: 10, yOffset: '75%', active: activeLap === 'LAP 01' },
-    { lap: 'LAP 02', zone: 'Acceleration Zone', left: 30, yOffset: '65%', active: activeLap === 'LAP 02' },
-    { lap: 'LAP 03', zone: 'Technical Section', left: 50, yOffset: '52.5%', active: activeLap === 'LAP 03' },
-    { lap: 'LAP 04', zone: 'High Speed Zone', left: 70, yOffset: '35%', active: activeLap === 'LAP 04' },
-    { lap: 'LAP 05', zone: 'Final Corner', left: 90, yOffset: '20%', active: activeLap === 'LAP 05' },
+    { lap: 'LAP 01', zone: 'Speed Zone', left: 10, yOffset: '79.5%', active: activeLap === 'LAP 01' },
+    { lap: 'LAP 02', zone: 'Acceleration Zone', left: 30, yOffset: '70%', active: activeLap === 'LAP 02' },
+    { lap: 'LAP 03', zone: 'Technical Section', left: 50, yOffset: '58.1%', active: activeLap === 'LAP 03' },
+    { lap: 'LAP 04', zone: 'High Speed Zone', left: 70, yOffset: '52.9%', active: activeLap === 'LAP 04' },
+    { lap: 'LAP 05', zone: 'Final Corner', left: 90, yOffset: '27.1%', active: activeLap === 'LAP 05' },
   ];
 
   return (
     <main
-      className="relative flex min-h-[1100px] h-screen w-full overflow-hidden bg-[#050405] text-white select-none"
+      className="relative flex h-[max(100vh,831px)] w-full overflow-hidden bg-[#050405] text-white select-none"
       onClick={() => {
         if (flowState === 2) {
           setFlowState(15);
@@ -72,7 +72,7 @@ export default function HomeScreen() {
 
       {/* Soft diffuse atmospheric glow directly behind the car (no visible hard boundaries) */}
       <div
-        className="pointer-events-none absolute left-1/2 top-[45%] -translate-x-1/2 -translate-y-1/2 h-[700px] w-[700px] opacity-80"
+        className="pointer-events-none absolute left-1/2 top-[495px] -translate-x-1/2 -translate-y-1/2 h-[700px] w-[700px] opacity-80"
         style={{
           background: "radial-gradient(circle at center, rgba(255,255,255,0.08) 0%, transparent 60%)"
         }}
@@ -192,13 +192,13 @@ export default function HomeScreen() {
 
       {/* MAIN CONTENT AREA */}
       {/* 3. TITLE SECTION (Anchored independently to the screen top) */}
-      <div className="absolute top-[11.8%] left-1/2 flex flex-col items-center text-center w-max -translate-x-1/2 z-20">
-        <h1 className={`${shrikhand.className} text-[36px] md:text-[60px] leading-[39px] tracking-[0.01em] uppercase`}>
+      <div className="absolute top-[130px] left-1/2 flex flex-col items-center text-center w-max -translate-x-1/2 z-20">
+        <h1 className={`${shrikhand.className} text-[36px] md:text-[60px] leading-[39px] tracking-[0.01em] uppercase font-normal antialiased`}>
           <span className="text-white drop-shadow-sm">ENGINEERED FOR </span>
           <span className="text-[#BF0405] drop-shadow-[0_0_15px_rgba(191,4,5,0.4)]">PASSION</span>
         </h1>
 
-        <p className="mt-5 text-[18px] font-semibold leading-[39px] tracking-[0.01em] text-white/70">
+        <p className="mt-5 text-[18px] font-normal leading-[39px] tracking-[0.01em] text-white/70">
           Precision. Power. Performance
         </p>
 
@@ -207,7 +207,7 @@ export default function HomeScreen() {
       </div>
 
       {/* 4. CENTER CAR WRAPPER (TRUE VIEWPORT & OPTICAL CENTER) */}
-      <div className="absolute top-[39%] left-1/2 z-10 w-[534px] h-[534px]" style={{ transform: 'translate(-50%, -50%)' }}>
+      <div className="absolute top-[429px] left-1/2 z-10 w-[534px] h-[534px]" style={{ transform: 'translate(-50%, -50%)' }}>
 
         {/* CAR DISPLAY — no scaling on click, only the car image at its natural size */}
         <div className={`relative flex items-center justify-center w-full h-full ${trClass}`}>
@@ -275,41 +275,44 @@ export default function HomeScreen() {
           </div>
 
           {/* STATS OVERLAY - Only visible in animated screen state (flowState 1 and 2) */}
-          <div className={`absolute inset-0 pointer-events-none transition-all duration-[400ms] ease-[cubic-bezier(0.175,0.885,0.32,1.2)] ${(flowState === 1 || flowState === 2) ? 'opacity-100 scale-100' : 'opacity-0 scale-[0.3]'}`}>
+          <div
+            className={`absolute inset-0 pointer-events-none transition-all duration-[400ms] ease-[cubic-bezier(0.175,0.885,0.32,1.2)] ${(flowState === 1 || flowState === 2) ? 'opacity-100 scale-100' : 'opacity-0 scale-[0.3]'}`}
+            style={{ fontFamily: '"SF Pro Display", "SF Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif' }}
+          >
             {/* Top Left */}
-            <div className="absolute -left-[60px] top-[20px] text-right">
-              <div className="text-[20px] font-bold text-white leading-tight">352</div>
-              <div className="text-[9px] text-gray-400 uppercase tracking-widest mt-1">Top Speed</div>
+            <div className="absolute right-[calc(100%-81px)] top-[110px] text-right w-max">
+              <div className="text-[30px] font-semibold text-white leading-none tracking-tight">352</div>
+              <div className="text-[13px] text-white/60 mt-1.5 font-normal">Top Speed</div>
             </div>
 
             {/* Mid Left */}
-            <div className="absolute -left-[90px] top-[150px] text-right">
-              <div className="text-[20px] font-bold text-white leading-tight">620</div>
-              <div className="text-[9px] text-gray-400 uppercase tracking-widest mt-1">HP Power</div>
+            <div className="absolute right-[calc(100%-30px)] top-1/2 -translate-y-1/2 text-right w-max">
+              <div className="text-[30px] font-semibold text-white leading-none tracking-tight">620</div>
+              <div className="text-[13px] text-white/60 mt-1.5 font-normal">Power (HP)</div>
             </div>
 
             {/* Bottom Left */}
-            <div className="absolute -left-[60px] bottom-[20px] text-right">
-              <div className="text-[20px] font-bold text-white leading-tight">750</div>
-              <div className="text-[9px] text-gray-400 uppercase tracking-widest mt-1">RPM Engine</div>
+            <div className="absolute right-[calc(100%-81px)] bottom-[110px] text-right w-max">
+              <div className="text-[30px] font-semibold text-white leading-none tracking-tight">780</div>
+              <div className="text-[13px] text-white/60 mt-1.5 font-normal">Torque</div>
             </div>
 
             {/* Top Right */}
-            <div className="absolute -right-[70px] top-[20px] text-left">
-              <div className="text-[20px] font-bold text-white leading-tight">3.2 Sec</div>
-              <div className="text-[9px] text-gray-400 uppercase tracking-widest mt-1">0-100</div>
+            <div className="absolute left-[calc(100%-81px)] top-[110px] text-left w-max">
+              <div className="text-[30px] font-semibold text-white leading-none tracking-tight">3.2 Sec</div>
+              <div className="text-[13px] text-white/60 mt-1.5 font-normal">0-100 KM/H</div>
             </div>
 
             {/* Mid Right */}
-            <div className="absolute -right-[100px] top-[150px] text-left">
-              <div className="text-[20px] font-bold text-white leading-tight">2,450 KM</div>
-              <div className="text-[9px] text-gray-400 uppercase tracking-widest mt-1">Mileage</div>
+            <div className="absolute left-[calc(100%-30px)] top-1/2 -translate-y-1/2 text-left w-max">
+              <div className="text-[30px] font-semibold text-white leading-none tracking-tight">2,450 KM</div>
+              <div className="text-[13px] text-white/60 mt-1.5 font-normal">Oil Change</div>
             </div>
 
             {/* Bottom Right */}
-            <div className="absolute -right-[70px] bottom-[20px] text-left">
-              <div className="text-[20px] font-bold text-white leading-tight">520 KM</div>
-              <div className="text-[9px] text-gray-400 uppercase tracking-widest mt-1">Range</div>
+            <div className="absolute left-[calc(100%-81px)] bottom-[110px] text-left w-max">
+              <div className="text-[30px] font-semibold text-white leading-none tracking-tight">520 KM</div>
+              <div className="text-[13px] text-white/60 mt-1.5 font-normal">Range</div>
             </div>
           </div>
         </div>
@@ -405,18 +408,18 @@ export default function HomeScreen() {
       </div>
 
       {/* 5. SIDE NAVIGATION - LEFT */}
-      <div className="absolute left-[calc(10%-80px)] top-[39%] -translate-y-1/2 w-[120px] h-[300px] z-30">
+      <div className="absolute left-[calc(10%-80px)] top-[429px] -translate-y-1/2 w-[120px] h-[300px] z-30">
         {/* Decorative Dashed Arc - Convex to the left, spaced 20px away from buttons */}
-        <svg className="absolute inset-0 w-full h-full pointer-events-none overflow-visible" viewBox="0 0 120 300">
-          <path d="M 55 0 Q -65 150 55 300" fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="2.5" strokeDasharray="8 14" strokeLinecap="round" />
+        <svg className="absolute left-0 top-1/2 -translate-y-1/2 w-full h-[95%] pointer-events-none overflow-visible" viewBox="0 0 120 300">
+          <path d="M 55 0 Q -65 150 55 300" fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="1.5" strokeDasharray="8 14" strokeLinecap="round" />
         </svg>
 
         {/* Timer Button */}
         <Image
           src="/assets/icons/timer_icon.svg"
           alt="Timer"
-          width={62} height={62}
-          className="absolute left-[34px] top-[34px] cursor-pointer transition-transform hover:scale-105 z-10"
+          width={59} height={59}
+          className="absolute left-[44px] top-[34px] cursor-pointer transition-transform hover:scale-105 z-10"
           onClick={() => {
             if (flowState === 2) {
               setFlowState(15);
@@ -430,7 +433,7 @@ export default function HomeScreen() {
           <Image
             src={(flowState === 1 || flowState === 2) ? "/assets/icons/home_active.svg" : "/assets/icons/home_icon.svg"}
             alt="Home"
-            width={62} height={62}
+            width={59} height={59}
             className="cursor-pointer transition-transform hover:scale-105"
             onClick={() => flowState === 0 && setFlowState(1)}
           />
@@ -440,8 +443,8 @@ export default function HomeScreen() {
         <Image
           src="/assets/icons/rupee_icon.svg"
           alt="Rupee"
-          width={62} height={62}
-          className="absolute left-[34px] top-[204px] cursor-pointer transition-transform hover:scale-105 z-10"
+          width={59} height={59}
+          className="absolute left-[44px] top-[204px] cursor-pointer transition-transform hover:scale-105 z-10"
           onClick={() => {
             if (flowState === 2) {
               setFlowState(15);
@@ -452,18 +455,18 @@ export default function HomeScreen() {
       </div>
 
       {/* 6. SIDE NAVIGATION - RIGHT */}
-      <div className="absolute right-[calc(10%-80px)] top-[39%] -translate-y-1/2 w-[120px] h-[300px] z-30">
+      <div className="absolute right-[calc(10%-80px)] top-[429px] -translate-y-1/2 w-[120px] h-[300px] z-30">
         {/* Decorative Dashed Arc - Convex to the right, spaced 20px away from buttons */}
-        <svg className="absolute inset-0 w-full h-full pointer-events-none overflow-visible" viewBox="0 0 120 300">
-          <path d="M 65 0 Q 185 150 65 300" fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="2.5" strokeDasharray="8 14" strokeLinecap="round" />
+        <svg className="absolute left-0 top-1/2 -translate-y-1/2 w-full h-[95%] pointer-events-none overflow-visible" viewBox="0 0 120 300">
+          <path d="M 65 0 Q 185 150 65 300" fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="1.5" strokeDasharray="8 14" strokeLinecap="round" />
         </svg>
 
         {/* Chat Button */}
         <Image
           src="/assets/icons/chat_icon.svg"
           alt="Chat"
-          width={62} height={62}
-          className="absolute left-[24px] top-[34px] cursor-pointer transition-transform hover:scale-105 z-10"
+          width={59} height={59}
+          className="absolute left-[14px] top-[34px] cursor-pointer transition-transform hover:scale-105 z-10"
           onClick={() => {
             if (flowState === 2) {
               setFlowState(15);
@@ -477,7 +480,7 @@ export default function HomeScreen() {
           <Image
             src="/assets/icons/timeline_icon.svg"
             alt="Timeline"
-            width={62} height={62}
+            width={59} height={59}
             className="cursor-pointer transition-transform hover:scale-105"
             onClick={(e) => {
               e.stopPropagation();
@@ -508,8 +511,8 @@ export default function HomeScreen() {
         <Image
           src="/assets/icons/notes_icon.svg"
           alt="Notes"
-          width={62} height={62}
-          className="absolute left-[24px] top-[204px] cursor-pointer transition-transform hover:scale-105 z-10"
+          width={59} height={59}
+          className="absolute left-[14px] top-[204px] cursor-pointer transition-transform hover:scale-105 z-10"
           onClick={() => {
             if (flowState === 2) {
               setFlowState(15);
@@ -522,18 +525,66 @@ export default function HomeScreen() {
       {/* GLOBAL ANIMATED TOOLTIP */}
       {/* Anchored right side, animates X via transform to avoid layout reflow */}
       <div
-        className="absolute top-[39%] -translate-y-1/2 right-[calc(10%+15px)] pointer-events-none z-50"
+        className="absolute top-[429px] -translate-y-1/2 right-[calc(10%+15px)] pointer-events-none z-50"
       >
         <div
           className={`transition-all ${flowState === 0 || flowState === 15 ? 'duration-[1000ms] delay-0' : 'duration-[600ms] delay-[300ms]'} ease-[cubic-bezier(0.2,0.8,0.2,1)] ${flowState === 3 ? 'opacity-0' : 'opacity-100'}`}
           style={{ transform: flowState === 0 || flowState === 15 ? 'translateX(calc(-80vw + 158px))' : 'translateX(0)' }}
         >
-          {/* Fixed width pill with crossfading text to prevent width snapping */}
-          <div className="relative w-[130px] h-[36px] bg-[#262626] border border-red-500/60 rounded-full shadow-[0_0_15px_rgba(239,68,68,0.2)] overflow-hidden">
-            <div className={`absolute inset-0 flex items-center justify-center text-white text-[12px] font-medium tracking-wide whitespace-nowrap transition-opacity duration-500 ${flowState === 0 ? 'opacity-100' : 'opacity-0'}`}>
+          {/* Fixed width pill with crossfading text and SVG backgrounds to perfectly match the pointed-tail design */}
+          <div className="relative w-[130px] h-[36px] overflow-visible drop-shadow-[0_0_15px_rgba(239,68,68,0.15)]">
+
+            {/* SVG Background for LEFT SIDE (flowState === 0) */}
+            <svg
+              className={`absolute inset-0 w-full h-full transition-opacity duration-500 ${flowState === 0 || flowState === 15 ? 'opacity-100' : 'opacity-0'}`}
+              viewBox="0 0 130 36"
+              preserveAspectRatio="none"
+            >
+              <defs>
+                <linearGradient id="grad-left" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="30%" stopColor="transparent" />
+                  <stop offset="100%" stopColor="#dc2626" />
+                </linearGradient>
+              </defs>
+              <path
+                d="M 112 1 L 18 1 A 6 6 0 0 0 12 7 L 12 13 Q 7 13 7 18 Q 7 23 12 23 L 12 29 A 6 6 0 0 0 18 35 L 112 35 A 17 17 0 0 0 112 1 Z"
+                fill="#262626"
+                stroke="url(#grad-left)"
+                strokeWidth="1.5"
+              />
+            </svg>
+
+            {/* SVG Background for RIGHT SIDE (flowState > 0) */}
+            <svg
+              className={`absolute inset-0 w-full h-full transition-opacity duration-500 ${(flowState > 0 && flowState !== 15) ? 'opacity-100' : 'opacity-0'}`}
+              viewBox="0 0 130 36"
+              preserveAspectRatio="none"
+            >
+              <defs>
+                <linearGradient id="grad-right" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#dc2626" />
+                  <stop offset="70%" stopColor="transparent" />
+                </linearGradient>
+              </defs>
+              <path
+                d="M 18 1 L 112 1 A 6 6 0 0 1 118 7 L 118 13 Q 123 13 123 18 Q 123 23 118 23 L 118 29 A 6 6 0 0 1 112 35 L 18 35 A 17 17 0 0 1 18 1 Z"
+                fill="#262626"
+                stroke="url(#grad-right)"
+                strokeWidth="1.5"
+              />
+            </svg>
+
+            {/* Text Content */}
+            <div
+              className={`absolute inset-0 flex items-center justify-center text-white/90 text-[12px] font-light tracking-wide whitespace-nowrap transition-opacity duration-500 ${flowState === 0 || flowState === 15 ? 'opacity-100' : 'opacity-0'}`}
+              style={{ fontFamily: '"SF Pro Display", "SF Pro", -apple-system, sans-serif' }}
+            >
               Click for Home
             </div>
-            <div className={`absolute inset-0 flex items-center justify-center text-white text-[12px] font-medium tracking-wide whitespace-nowrap transition-opacity duration-500 ${flowState > 0 ? 'opacity-100' : 'opacity-0'}`}>
+            <div
+              className={`absolute inset-0 flex items-center justify-center text-white/90 text-[12px] font-light tracking-wide whitespace-nowrap transition-opacity duration-500 ${(flowState > 0 && flowState !== 15) ? 'opacity-100' : 'opacity-0'}`}
+              style={{ fontFamily: '"SF Pro Display", "SF Pro", -apple-system, sans-serif' }}
+            >
               Explore timeline
             </div>
           </div>
@@ -541,22 +592,73 @@ export default function HomeScreen() {
       </div>
 
       {/* 7. BOTTOM RACING TIMELINE */}
-      <div className="absolute bottom-0 left-0 w-full h-[320px] z-30 pointer-events-none">
-        {/* Subtle red atmospheric glow underneath the path */}
-        <div className="absolute bottom-0 left-0 w-full h-[200px] bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-red-600/5 via-red-900/5 to-transparent blur-2xl" />
-
-        {/* The dashed racing path */}
+      <div className="absolute top-[570px] left-0 w-full h-[256px] z-30 pointer-events-none">
+        {/* The dashed racing path & its exact conforming atmospheric glow */}
         <svg
-          className="absolute top-[80px] left-0 w-full h-[150px] overflow-visible"
-          viewBox="0 0 100 100"
+          className="absolute top-[64px] left-0 w-full h-[192px] overflow-visible"
+          viewBox="0 0 100 160"
           preserveAspectRatio="none"
         >
+          <defs>
+            <linearGradient id="glowWeak" x1="0" y1="0" x2="0" y2="160" gradientUnits="userSpaceOnUse">
+              <stop offset="40%" stopColor="#c40504" stopOpacity="0.06" />
+              <stop offset="50%" stopColor="#c40504" stopOpacity="0.03" />
+              <stop offset="90%" stopColor="#7f1d1d" stopOpacity="0" />
+            </linearGradient>
+
+            <linearGradient id="glowMed" x1="0" y1="0" x2="0" y2="160" gradientUnits="userSpaceOnUse">
+              <stop offset="30%" stopColor="#c40504" stopOpacity="0.12" />
+              <stop offset="60%" stopColor="#c40504" stopOpacity="0.05" />
+              <stop offset="95%" stopColor="#7f1d1d" stopOpacity="0" />
+            </linearGradient>
+
+            <linearGradient id="glowStrong" x1="0" y1="0" x2="0" y2="160" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stopColor="#c40504" stopOpacity="0.18" />
+              <stop offset="12%" stopColor="#c40504" stopOpacity="0.18" />
+              <stop offset="95%" stopColor="#7f1d1d" stopOpacity="0.12" />
+              <stop offset="100%" stopColor="#7f1d1d" stopOpacity="0" />
+            </linearGradient>
+
+            <linearGradient id="horizMed" x1="20" y1="0" x2="60" y2="0" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stopColor="white" stopOpacity="0" />
+              <stop offset="100%" stopColor="white" stopOpacity="1" />
+            </linearGradient>
+
+            <linearGradient id="horizStrong" x1="60" y1="0" x2="90" y2="0" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stopColor="white" stopOpacity="0" />
+              <stop offset="100%" stopColor="white" stopOpacity="1" />
+            </linearGradient>
+
+            <mask id="maskMed">
+              <rect x="0" y="0" width="100" height="160" fill="url(#horizMed)" />
+            </mask>
+
+            <mask id="maskStrong">
+              <rect x="0" y="0" width="100" height="160" fill="url(#horizStrong)" />
+            </mask>
+          </defs>
+
+          {/* Fill shape composite layers for atmospheric glow */}
+          {[
+            { fill: "url(#glowWeak)" },
+            { fill: "url(#glowMed)", mask: "url(#maskMed)" },
+            { fill: "url(#glowStrong)", mask: "url(#maskStrong)" },
+          ].map((layer, i) => (
+            <path
+              key={i}
+              d="M 0 90 C 1.7 88, 3.3 86, 5 84 C 6.7 82, 8.3 80, 10 79.5 C 11.7 79.8, 13.3 79.8, 15 79.5 C 16.7 79.2, 18.3 79.1, 20 77.6 C 21.7 76.1, 23.3 71.8, 25 70.5 C 26.7 69.2, 28.3 70.1, 30 70 C 31.7 69.9, 33.3 70.2, 35 70 C 36.7 69.8, 38.3 69.6, 40 69 C 41.7 68.5, 43.3 68.5, 45 66.7 C 46.7 64.9, 48.3 60.0, 50 58.1 C 51.7 56.2, 53.3 55.8, 55 55.2 C 56.7 54.6, 58.3 54.5, 60 54.3 C 61.7 54.1, 63.3 54.0, 65 53.8 C 66.7 53.6, 68.3 54.2, 70 52.9 C 71.7 51.6, 73.3 49.4, 75 46.2 C 76.7 43.0, 78.3 36.7, 80 33.8 C 81.7 30.9, 83.3 29.7, 85 28.6 C 86.7 27.5, 88.3 27.9, 90 27.1 C 91.7 26.3, 93.3 25.0, 95 23.8 C 96.7 22.6, 98.3 20.6, 100 20 L 100 160 L 0 160 Z"
+              fill={layer.fill}
+              mask={layer.mask}
+            />
+          ))}
+
+          {/* The dashed line */}
           <path
-            d="M 0 80 C 5 80, 5 75, 10 75 C 20 75, 20 65, 30 65 C 40 65, 40 52.5, 50 52.5 C 60 52.5, 60 35, 70 35 C 80 35, 80 20, 90 20 C 95 20, 95 15, 100 15"
+            d="M 0 90 C 1.7 88, 3.3 86, 5 84 C 6.7 82, 8.3 80, 10 79.5 C 11.7 79.8, 13.3 79.8, 15 79.5 C 16.7 79.2, 18.3 79.1, 20 77.6 C 21.7 76.1, 23.3 71.8, 25 70.5 C 26.7 69.2, 28.3 70.1, 30 70 C 31.7 69.9, 33.3 70.2, 35 70 C 36.7 69.8, 38.3 69.6, 40 69 C 41.7 68.5, 43.3 68.5, 45 66.7 C 46.7 64.9, 48.3 60.0, 50 58.1 C 51.7 56.2, 53.3 55.8, 55 55.2 C 56.7 54.6, 58.3 54.5, 60 54.3 C 61.7 54.1, 63.3 54.0, 65 53.8 C 66.7 53.6, 68.3 54.2, 70 52.9 C 71.7 51.6, 73.3 49.4, 75 46.2 C 76.7 43.0, 78.3 36.7, 80 33.8 C 81.7 30.9, 83.3 29.7, 85 28.6 C 86.7 27.5, 88.3 27.9, 90 27.1 C 91.7 26.3, 93.3 25.0, 95 23.8 C 96.7 22.6, 98.3 20.6, 100 20"
             fill="none"
-            stroke="#dc2626"
+            stroke="#ef4444"
             strokeWidth="2"
-            strokeDasharray="6 6"
+            strokeDasharray="8 5"
             vectorEffect="non-scaling-stroke"
           />
         </svg>
@@ -568,22 +670,20 @@ export default function HomeScreen() {
             className="absolute flex flex-col items-center -translate-x-1/2 pointer-events-auto"
             style={{
               left: `${cp.left}%`,
-              top: `calc(80px + (150px * ${parseFloat(cp.yOffset) / 100}))`,
+              top: `calc(64px + (120px * ${parseFloat(cp.yOffset) / 100}))`,
               bottom: '40px'
             }}
           >
-            {/* Exactly 54x54 Checkpoint visual element centered exactly on the path */}
+            {/* Checkpoint visual element (no outer circle) centered exactly on the path */}
             <div
-              className={`relative z-10 flex items-center justify-center rounded-full h-[54px] w-[54px] -mt-[27px] bg-[#161616] ${trClass} ${cp.active
-                ? 'shadow-[0_0_15px_rgba(239,68,68,0.3)] border border-red-500/20'
-                : 'shadow-lg border border-white/5'
-                }`}
+              className={`relative z-10 flex items-center justify-center h-[54px] w-[54px] -mt-[27px] ${trClass}`}
             >
               <Image
                 src={cp.active ? "/assets/icons/progress_icon_active.svg" : "/assets/icons/progress_icon.svg"}
                 alt={cp.lap}
-                width={cp.active ? 20 : 18}
-                height={cp.active ? 20 : 18}
+                width={54}
+                height={54}
+                className={cp.active ? 'drop-shadow-[0_0_12px_rgba(239,68,68,0.8)]' : ''}
               />
             </div>
 
@@ -591,7 +691,7 @@ export default function HomeScreen() {
             <div className={`flex-1 border-l border-dashed ${trClass} ${cp.active ? 'border-red-600/50' : 'border-[#4b5563]/60'} w-0 mt-2 mb-2`} />
 
             {/* Text Label aligned identically at the bottom */}
-            <div className="absolute top-full w-[140px] text-center">
+            <div className="absolute top-full w-[140px] text-center" style={{ fontFamily: '"SF Pro Display", "SF Pro", -apple-system, sans-serif' }}>
               <div className={`text-[12px] md:text-[13px] font-bold tracking-wider ${trClass} ${cp.active ? 'text-white' : 'text-gray-400'}`}>
                 {cp.lap}
               </div>
